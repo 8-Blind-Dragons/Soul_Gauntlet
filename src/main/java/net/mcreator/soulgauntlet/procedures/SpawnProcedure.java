@@ -33,18 +33,15 @@ public class SpawnProcedure {
 	}
 
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
-		if (world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("plains"))) {
-			if (SoulGauntletModVariables.MapVariables.get(world).Structure_Spawn == false) {
-				if ((world.getBlockState(BlockPos.containing(x + 25, y - 1, z + 25))).getBlock() == Blocks.GRASS_BLOCK) {
-					SoulGauntletModVariables.MapVariables.get(world).Structure_Spawn = true;
-					SoulGauntletModVariables.MapVariables.get(world).syncData(world);
-					if (world instanceof ServerLevel _serverworld) {
-						StructureTemplate template = _serverworld.getStructureManager().getOrCreate(new ResourceLocation("soul_gauntlet", "saviorchurchfinal"));
-						if (template != null) {
-							template.placeInWorld(_serverworld, BlockPos.containing(x + 25, y - 2, z + 25), BlockPos.containing(x + 25, y - 2, z + 25),
-									new StructurePlaceSettings().setRotation(Rotation.NONE).setMirror(Mirror.NONE).setIgnoreEntities(false), _serverworld.random, 3);
-						}
-					}
+		if (world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("plains")) && SoulGauntletModVariables.MapVariables.get(world).Structure_Spawn == false
+				&& !((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == Blocks.AIR)) {
+			SoulGauntletModVariables.MapVariables.get(world).Structure_Spawn = true;
+			SoulGauntletModVariables.MapVariables.get(world).syncData(world);
+			if (world instanceof ServerLevel _serverworld) {
+				StructureTemplate template = _serverworld.getStructureManager().getOrCreate(new ResourceLocation("soul_gauntlet", "saviorchurchfinal"));
+				if (template != null) {
+					template.placeInWorld(_serverworld, BlockPos.containing(x + 25, y - 1, z + 25), BlockPos.containing(x + 25, y - 1, z + 25), new StructurePlaceSettings().setRotation(Rotation.NONE).setMirror(Mirror.NONE).setIgnoreEntities(false),
+							_serverworld.random, 3);
 				}
 			}
 		}

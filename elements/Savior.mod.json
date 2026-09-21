@@ -19,18 +19,6 @@
         "name": "Stage",
         "type": "integer",
         "value": 0
-      },
-      {
-        "min": -2147483648,
-        "max": 2147483647,
-        "name": "Message",
-        "type": "integer",
-        "value": 1
-      },
-      {
-        "name": "Talks",
-        "type": "logic",
-        "value": false
       }
     ],
     "modelWidth": 0.6,
@@ -123,10 +111,10 @@
       "value": ""
     },
     "onRightClickedOn": {
-      "name": "SaviorButton2"
+      "name": "RightButton"
     },
     "onMobTickUpdate": {
-      "name": "Imortalidade"
+      "name": "SaviorCore"
     },
     "hasAI": false,
     "aiBase": "(none)",

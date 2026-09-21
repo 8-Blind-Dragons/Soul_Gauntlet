@@ -47,8 +47,8 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.soulgauntlet.procedures.SaviorButton2Procedure;
-import net.mcreator.soulgauntlet.procedures.ImortalidadeProcedure;
+import net.mcreator.soulgauntlet.procedures.SaviorCoreProcedure;
+import net.mcreator.soulgauntlet.procedures.RightButtonProcedure;
 import net.mcreator.soulgauntlet.init.SoulGauntletModEntities;
 
 public class SaviorEntity extends PathfinderMob implements GeoEntity {
@@ -56,8 +56,6 @@ public class SaviorEntity extends PathfinderMob implements GeoEntity {
 	public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(SaviorEntity.class, EntityDataSerializers.STRING);
 	public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(SaviorEntity.class, EntityDataSerializers.STRING);
 	public static final EntityDataAccessor<Integer> DATA_Stage = SynchedEntityData.defineId(SaviorEntity.class, EntityDataSerializers.INT);
-	public static final EntityDataAccessor<Integer> DATA_Message = SynchedEntityData.defineId(SaviorEntity.class, EntityDataSerializers.INT);
-	public static final EntityDataAccessor<Boolean> DATA_Talks = SynchedEntityData.defineId(SaviorEntity.class, EntityDataSerializers.BOOLEAN);
 	private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 	private boolean swinging;
 	private boolean lastloop;
@@ -84,8 +82,6 @@ public class SaviorEntity extends PathfinderMob implements GeoEntity {
 		this.entityData.define(ANIMATION, "undefined");
 		this.entityData.define(TEXTURE, "saviortexture1");
 		this.entityData.define(DATA_Stage, 0);
-		this.entityData.define(DATA_Message, 1);
-		this.entityData.define(DATA_Talks, false);
 	}
 
 	public void setTexture(String texture) {
@@ -169,8 +165,6 @@ public class SaviorEntity extends PathfinderMob implements GeoEntity {
 		super.addAdditionalSaveData(compound);
 		compound.putString("Texture", this.getTexture());
 		compound.putInt("DataStage", this.entityData.get(DATA_Stage));
-		compound.putInt("DataMessage", this.entityData.get(DATA_Message));
-		compound.putBoolean("DataTalks", this.entityData.get(DATA_Talks));
 	}
 
 	@Override
@@ -180,10 +174,6 @@ public class SaviorEntity extends PathfinderMob implements GeoEntity {
 			this.setTexture(compound.getString("Texture"));
 		if (compound.contains("DataStage"))
 			this.entityData.set(DATA_Stage, compound.getInt("DataStage"));
-		if (compound.contains("DataMessage"))
-			this.entityData.set(DATA_Message, compound.getInt("DataMessage"));
-		if (compound.contains("DataTalks"))
-			this.entityData.set(DATA_Talks, compound.getBoolean("DataTalks"));
 	}
 
 	@Override
@@ -197,14 +187,14 @@ public class SaviorEntity extends PathfinderMob implements GeoEntity {
 		Entity entity = this;
 		Level world = this.level();
 
-		SaviorButton2Procedure.execute(world, x, y, z, entity, sourceentity, itemstack);
+		RightButtonProcedure.execute(world, x, y, z, entity, sourceentity, itemstack);
 		return retval;
 	}
 
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		ImortalidadeProcedure.execute(this);
+		SaviorCoreProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
 		this.refreshDimensions();
 	}
 

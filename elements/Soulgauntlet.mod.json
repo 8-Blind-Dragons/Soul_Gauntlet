@@ -30,7 +30,7 @@
     "enableArmPose": false,
     "damageOnCrafting": false,
     "enableMeleeDamage": true,
-    "damageVsEntity": 15.0,
+    "damageVsEntity": 8.0,
     "specialInformation": {
       "fixedValue": []
     },
@@ -42,7 +42,7 @@
       "name": "Button2"
     },
     "onEntityHitWith": {
-      "name": "CollectPowers"
+      "name": "Button1"
     },
     "onItemInUseTick": {
       "name": "Passive"

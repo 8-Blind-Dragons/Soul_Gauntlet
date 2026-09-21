@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "soul_gauntlet:soulgauntlet"
+    },
+    "title": {
+      "translate": "advancements.soulgauntletachievement_3.title"
+    },
+    "description": {
+      "translate": "advancements.soulgauntletachievement_3.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "soulgauntletachievement_3_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "soul_gauntlet:soul_gauntlet_achievement"
+}

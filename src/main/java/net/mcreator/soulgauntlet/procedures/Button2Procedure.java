@@ -228,7 +228,7 @@ public class Button2Procedure {
 		}
 		if ((itemstack.getOrCreateTag().getString("Power")).equals("minecraft:iron_golem")) {
 			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-				_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1200, 4));
+				_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 300, 4));
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.END_ROD, x, y, z, 5, 1, 2, 1, 0.1);
 			if (entity instanceof Player _player)

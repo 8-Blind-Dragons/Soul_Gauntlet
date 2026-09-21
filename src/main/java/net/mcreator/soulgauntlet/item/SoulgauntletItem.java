@@ -29,8 +29,8 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 
 import net.mcreator.soulgauntlet.procedures.PassiveProcedure;
-import net.mcreator.soulgauntlet.procedures.CollectPowersProcedure;
 import net.mcreator.soulgauntlet.procedures.Button2Procedure;
+import net.mcreator.soulgauntlet.procedures.Button1Procedure;
 import net.mcreator.soulgauntlet.item.renderer.SoulgauntletItemRenderer;
 
 import java.util.function.Consumer;
@@ -109,7 +109,7 @@ public class SoulgauntletItem extends Item implements GeoItem {
 		if (equipmentSlot == EquipmentSlot.MAINHAND) {
 			ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
 			builder.putAll(super.getDefaultAttributeModifiers(equipmentSlot));
-			builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Item modifier", 13d, AttributeModifier.Operation.ADDITION));
+			builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Item modifier", 6d, AttributeModifier.Operation.ADDITION));
 			builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Item modifier", -2.4, AttributeModifier.Operation.ADDITION));
 			return builder.build();
 		}
@@ -136,7 +136,7 @@ public class SoulgauntletItem extends Item implements GeoItem {
 	@Override
 	public boolean hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
 		boolean retval = super.hurtEnemy(itemstack, entity, sourceentity);
-		CollectPowersProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity, sourceentity, itemstack);
+		Button1Procedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity, sourceentity, itemstack);
 		return retval;
 	}
 

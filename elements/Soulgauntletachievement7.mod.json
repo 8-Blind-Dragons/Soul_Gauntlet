@@ -1,0 +1,24 @@
+{
+  "_fv": 73,
+  "_type": "achievement",
+  "definition": {
+    "achievementName": "You're evil, sadistic, a true monster that devours everything in its path… This is why I like you. ",
+    "achievementDescription": "Kill a thousand entities",
+    "achievementIcon": {
+      "value": "Items.NETHERITE_INGOT"
+    },
+    "background": "Default",
+    "disableDisplay": false,
+    "showPopup": true,
+    "announceToChat": true,
+    "hideIfNotCompleted": true,
+    "rewardLoot": [],
+    "rewardRecipes": [],
+    "rewardXP": 1000,
+    "achievementType": "challenge",
+    "parent": {
+      "value": "CUSTOM:SoulGauntletAchievement"
+    },
+    "triggerxml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"advancement_trigger\" deletable=\"false\" x=\"40\" y=\"80\"><next><block type=\"custom_trigger\"></block></next></block></xml>"
+  }
+}
