@@ -3,19 +3,16 @@ package net.mcreator.soulgauntlet.procedures;
 import net.minecraftforge.fml.loading.progress.Message;
 
 public class GetSecondsProcedure {
-	public static double execute(String message) {
-		if (message == null)
+	public static double execute(String Part, String message) {
+		if (Part == null || message == null)
 			return 0;
 		String Message = "";
 		double n = 0;
-		if (message.contains("Time")) {
-			Message = message;
-			Message = (Message).toLowerCase();
-			Message = ((Message.replaceAll(".*Time:", "")).replace("s", "")).replaceAll("^.*time:", "");
+		if (message.contains("t")) {
+			Message = message.replace("<P" + Part + "[t:", "");
 			n = 0;
 			n = Integer.parseInt(Message);
-			n = n * 20;
-			return n;
+			return n * 20;
 		}
 		return 40;
 	}

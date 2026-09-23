@@ -19,6 +19,11 @@
         "name": "Stage",
         "type": "integer",
         "value": 0
+      },
+      {
+        "name": "Reset",
+        "type": "logic",
+        "value": false
       }
     ],
     "modelWidth": 0.6,

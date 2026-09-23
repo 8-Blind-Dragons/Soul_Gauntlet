@@ -56,6 +56,7 @@ public class SaviorEntity extends PathfinderMob implements GeoEntity {
 	public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(SaviorEntity.class, EntityDataSerializers.STRING);
 	public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(SaviorEntity.class, EntityDataSerializers.STRING);
 	public static final EntityDataAccessor<Integer> DATA_Stage = SynchedEntityData.defineId(SaviorEntity.class, EntityDataSerializers.INT);
+	public static final EntityDataAccessor<Boolean> DATA_Reset = SynchedEntityData.defineId(SaviorEntity.class, EntityDataSerializers.BOOLEAN);
 	private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 	private boolean swinging;
 	private boolean lastloop;
@@ -82,6 +83,7 @@ public class SaviorEntity extends PathfinderMob implements GeoEntity {
 		this.entityData.define(ANIMATION, "undefined");
 		this.entityData.define(TEXTURE, "saviortexture1");
 		this.entityData.define(DATA_Stage, 0);
+		this.entityData.define(DATA_Reset, false);
 	}
 
 	public void setTexture(String texture) {
@@ -165,6 +167,7 @@ public class SaviorEntity extends PathfinderMob implements GeoEntity {
 		super.addAdditionalSaveData(compound);
 		compound.putString("Texture", this.getTexture());
 		compound.putInt("DataStage", this.entityData.get(DATA_Stage));
+		compound.putBoolean("DataReset", this.entityData.get(DATA_Reset));
 	}
 
 	@Override
@@ -174,6 +177,8 @@ public class SaviorEntity extends PathfinderMob implements GeoEntity {
 			this.setTexture(compound.getString("Texture"));
 		if (compound.contains("DataStage"))
 			this.entityData.set(DATA_Stage, compound.getInt("DataStage"));
+		if (compound.contains("DataReset"))
+			this.entityData.set(DATA_Reset, compound.getBoolean("DataReset"));
 	}
 
 	@Override

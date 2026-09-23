@@ -105,8 +105,8 @@
       "registry_name": "gauntletblueprint",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/soulgauntlet/item/GauntletblueprintItem.java",
-          "src/main/resources/assets/soul_gauntlet/models/item/gauntletblueprint.json"
+          "src/main/resources/assets/soul_gauntlet/models/item/gauntletblueprint.json",
+          "src/main/java/net/mcreator/soulgauntlet/item/GauntletblueprintItem.java"
         ]
       },
       "path": "~/Items/Outros"
@@ -214,8 +214,8 @@
       "registry_name": "soul_gauntlet_interface",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/soulgauntlet/world/inventory/SoulGauntletInterfaceMenu.java",
           "src/main/java/net/mcreator/soulgauntlet/client/gui/SoulGauntletInterfaceScreen.java",
+          "src/main/java/net/mcreator/soulgauntlet/world/inventory/SoulGauntletInterfaceMenu.java",
           "src/main/java/net/mcreator/soulgauntlet/network/SoulGauntletInterfaceButtonMessage.java"
         ]
       },
@@ -654,16 +654,16 @@
       "metadata": {
         "files": [
           "src/main/java/net/mcreator/soulgauntlet/block/SoulAltarBlock.java",
-          "src/main/java/net/mcreator/soulgauntlet/block/renderer/SoulAltarDisplayItemRenderer.java",
+          "src/main/java/net/mcreator/soulgauntlet/block/model/SoulAltarDisplayModel.java",
+          "src/main/resources/assets/soul_gauntlet/models/block/soul_altar_blockstate_0.json",
+          "src/main/java/net/mcreator/soulgauntlet/block/model/SoulAltarBlockModel.java",
           "src/main/java/net/mcreator/soulgauntlet/block/renderer/SoulAltarTileRenderer.java",
           "src/main/java/net/mcreator/soulgauntlet/block/entity/SoulAltarTileEntity.java",
           "src/main/resources/assets/soul_gauntlet/models/item/soul_altar.json",
-          "src/main/resources/assets/soul_gauntlet/models/block/soul_altar_blockstate_0.json",
           "src/main/java/net/mcreator/soulgauntlet/block/display/SoulAltarDisplayItem.java",
           "src/main/resources/assets/soul_gauntlet/blockstates/soul_altar.json",
-          "src/main/java/net/mcreator/soulgauntlet/block/model/SoulAltarBlockModel.java",
-          "src/main/resources/assets/soul_gauntlet/models/custom/soul_altar_particle.json",
-          "src/main/java/net/mcreator/soulgauntlet/block/model/SoulAltarDisplayModel.java"
+          "src/main/java/net/mcreator/soulgauntlet/block/renderer/SoulAltarDisplayItemRenderer.java",
+          "src/main/resources/assets/soul_gauntlet/models/custom/soul_altar_particle.json"
         ]
       },
       "path": "~/Blocos"
@@ -692,12 +692,7 @@
         "files": [
           "src/main/java/net/mcreator/soulgauntlet/procedures/ConfigProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/Interfaces/DisplayConfig"
     },
@@ -745,8 +740,8 @@
       "metadata": {
         "files": [
           "src/main/java/net/mcreator/soulgauntlet/network/SoulGauntletRemovePowersButtonMessage.java",
-          "src/main/java/net/mcreator/soulgauntlet/world/inventory/SoulGauntletRemovePowersMenu.java",
-          "src/main/java/net/mcreator/soulgauntlet/client/gui/SoulGauntletRemovePowersScreen.java"
+          "src/main/java/net/mcreator/soulgauntlet/client/gui/SoulGauntletRemovePowersScreen.java",
+          "src/main/java/net/mcreator/soulgauntlet/world/inventory/SoulGauntletRemovePowersMenu.java"
         ]
       },
       "path": "~/Interfaces"
@@ -1099,41 +1094,6 @@
       "path": "~/Conquistas"
     },
     {
-      "name": "SaviorCore",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "savior_core",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/soulgauntlet/procedures/SaviorCoreProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/Procedimentos/Savior"
-    },
-    {
       "name": "SpawnPlayer",
       "type": "procedure",
       "compiles": true,
@@ -1251,12 +1211,117 @@
         ],
         "dependencies": [
           {
+            "name": "Part",
+            "type": "string"
+          },
+          {
             "name": "message",
             "type": "string"
           }
         ]
       },
       "path": "~/Externos/Message"
+    },
+    {
+      "name": "SorryCommand",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sorry_command",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/soulgauntlet/command/SorryCommandCommand.java"
+        ]
+      },
+      "path": "~/Commands"
+    },
+    {
+      "name": "SorryCommandProcedure",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sorry_command_procedure",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/soulgauntlet/procedures/SorryCommandProcedureProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Procedimentos/Commands_Folders"
+    },
+    {
+      "name": "SaviorFace",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "savior_face",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/soulgauntlet/world/inventory/SaviorFaceMenu.java",
+          "src/main/java/net/mcreator/soulgauntlet/client/gui/SaviorFaceScreen.java"
+        ]
+      },
+      "path": "~/Interfaces"
+    },
+    {
+      "name": "SaviorCore",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "savior_core",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/soulgauntlet/procedures/SaviorCoreProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Procedimentos/Savior"
     }
   ],
   "variable_elements": [
@@ -1297,11 +1362,13 @@
       "subtitles.tremblesfx": "",
       "entity.soul_gauntlet.savior": "Savior",
       "key.soul_gauntlet.select_power": "Select Power",
+      "Initial Call": "",
       "Offend": "",
       "advancements.soulgauntletachievement_3.title": "You really chose this route? What now? A talking flower?!  ",
       "Description of Offend": "",
       "death.attack.dismemberment": "%1$s lost a part of himself",
       "death.attack.dismemberment.player": "%2$s  Left a part of himself for %1$s",
+      "Sorrys accepted": "",
       "gui.soul_gauntlet.soul_gauntlet_remove_powers.button_slot3": "",
       "gui.soul_gauntlet.soul_gauntlet_remove_powers.button_slot2": "",
       "gui.soul_gauntlet.visual_novel.label_message": "Message",
@@ -1310,8 +1377,10 @@
       "advancements.soulgauntletachievement_4.descr": "You have completed Part 1 of the Storyline",
       "item.soul_gauntlet.savior_spawn_egg": "Savior Spawn Egg",
       "gui.soul_gauntlet.soul_gauntlet_interface.label_nbtslot1": "%nbt:Slot1%",
+      "Apology": "",
       "advancements.soul_gauntlet_achievement.descr": "Thanks for playing!!!",
       "advancements.soulgauntletachievement_7.title": "You\u0027re evil, sadistic, a true monster that devours everything in its path… This is why I like you. ",
+      "Division": "",
       "item.soul_gauntlet.soulgem": "Soul Gem",
       "advancements.soulgauntletachievement_4.title": "First Act",
       "advancements.soul_gauntlet_achievement.title": "Soul Gauntlet",
@@ -1329,6 +1398,7 @@
       "Result of Arrogance": "",
       "Savior_History": "\u003cPart\u003d1\u003e§b\u003c???\u003e A human...? It\u0027s been so long since anyone came here...\u003cPart\u003dEnd\u003e \u003cPart\u003d2\u003e§b\u003c???\u003e You must be wondering who I am, or what you can loot or kill around here, right? Human.\u003cPart\u003dEnd\u003e \u003cPart\u003d3\u003e§b\u003c???\u003e I am Tashia Dolrein. I used to be quite famous, back in the day.\u003cPart\u003dEnd\u003e \u003cPart\u003d4\u003e§c\u003cTashia Dolrein\u003e Before those traitors sealed me away...\u003cPart\u003dEnd\u003e \u003cPart\u003d5\u003e§b\u003cTashia Dolrein\u003e But I imagine you don’t know me — it has been a looooong time.\u003cPart\u003dEnd\u003e \u003cPart\u003d6\u003e§b\u003cTashia Dolrein\u003e Let’s skip the boring story and all that blah blah blah. I want to make a deal with you, human.\u003cPart\u003dEnd\u003e \u003cPart\u003d7\u003e§b\u003cTashia Dolrein\u003e I’ll give you the recipe to my power — something that brushes the edge of the divine...\u003cPart\u003dEnd\u003e \u003cPart\u003d8\u003e§b\u003cTashia Dolrein\u003e It’s just a simple gauntlet. Once you craft it, return to me and I’ll teach you how to enhance it.\u003cPart\u003dEnd\u003e \u003cPart\u003d9\u003e§c\u003cTashia Dolrein\u003e To become someone as terrifying as I am...\u003cPart\u003dEnd\u003e \u003cPart\u003d10\u003e§b\u003cTashia Dolrein\u003e Good luck, human.\u003cPart\u003dEnd\u003e \u003cPart\u003d11\u003e§b\u003cTashia Dolrein\u003e Welcome back, my dear apprentice...\u003cPart\u003dEnd\u003e \u003cPart\u003d12\u003e§b\u003cTashia Dolrein\u003e Though I can barely see with these eyes carved in stone, I can feel — you trusted me... and forged the gauntlet.\u003cPart\u003dEnd\u003e \u003cPart\u003d13\u003e§b\u003cTashia Dolrein\u003e But as you’ve likely noticed, it’s still just a shell. Its true power remains dormant...\u003cPart\u003dEnd\u003e \u003cPart\u003d14\u003e§b\u003cTashia Dolrein\u003e To awaken it, you’ll need to perform certain... sacrifices.\u003cPart\u003dEnd\u003e \u003cPart\u003d15\u003e§b\u003cTashia Dolrein\u003e After all, the essence of my power is rooted in sacrifice — it feeds on souls to grant your every desire.\u003cPart\u003dEnd\u003e \u003cPart\u003d16\u003e§b\u003cTashia Dolrein\u003e Now... touch me with the gauntlet, and I shall grant you my blessing.\u003cPart\u003dEnd\u003e \u003cPart\u003d17\u003e§b\u003cTashia Dolrein\u003e Very well... Now that I’ve blessed your gauntlet, you are ready to receive the Soul Gem.\u003cPart\u003dEnd\u003e \u003cPart\u003d18\u003e§b\u003cTashia Dolrein\u003e A special gem that will awaken the gauntlet’s true power. But as I said before... sacrifices will be required.\u003cPart\u003dEnd\u003e \u003cPart\u003d19\u003e§c\u003cTashia Dolrein\u003e Eliminate 100 of those filthy Villagers.\u003cPart\u003dEnd\u003e \u003cPart\u003d20\u003e§b\u003cTashia Dolrein\u003e Until next time, my dear apprentice...\u003cPart\u003dEnd\u003e \u003cPart\u003d21\u003e§b\u003cTashia Dolrein\u003e Hello again, my dear apprentice.\u003cPart\u003dEnd\u003e \u003cPart\u003d22\u003e§b\u003cTashia Dolrein\u003e The moment you reaped those 100 wretched souls, I felt a wave of power surge through the stone that binds me.\u003cPart\u003dEnd\u003e \u003cPart\u003d23\u003e§b\u003cTashia Dolrein\u003e I almost felt my mouth curl into a smile of joy... and then I remembered — I’m a statue.\u003cPart\u003dEnd\u003e \u003cPart\u003d24\u003e§b\u003cTashia Dolrein\u003e Now that you possess the gem, I shall grant you the recipe for the true §6Soul Gauntlet.\u003cPart\u003dEnd\u003e \u003cPart\u003d25\u003e§b\u003cTashia Dolrein\u003e Ah, how quickly you’ve grown... I said I would make a deal, and I kept my word.\u003cPart\u003dEnd\u003e \u003cPart\u003d26\u003e§b\u003cTashia Dolrein\u003e And what do I want in return? Why... absolutely nothing. Just enjoy the gift I’ve given you.\u003cPart\u003dEnd\u003e \u003cPart\u003d27\u003e§b\u003cTashia Dolrein\u003e Have fun harvesting those trembling, delicious souls... Each one brings you closer to true greatness.\u003cPart\u003dEnd\u003e \u003cPart\u003d28\u003e§b\u003cTashia Dolrein\u003e And perhaps... brings me closer to mine, too.\u003cPart\u003dEnd\u003e \u003cPart\u003d29\u003e§b\u003cTashia Dolrein\u003e Until we meet again... and of that, I am certain.\u003cPart\u003dEnd\u003e\u003cPart\u003d30\u003e\u003cPart\u003dEnd\u003e",
       "effect.soul_gauntlet.heavy_eyes": "Heavy Eyes",
+      "Offend Accepted": "",
       "gui.soul_gauntlet.soul_gauntlet_interface.button_slot": "Slot 1",
       "item.soul_gauntlet.gauntletdamaged": "Gauntlet Damaged",
       "advancements.soulgauntletachievement_6.descr": "Steal the Warden Soul ",
@@ -1352,23 +1422,30 @@
       "item_group.soul_gauntlet.soul_gauntlet_itens": "Soul Gauntlet",
       "advancements.soulgauntletachievement_6.title": "Absolute Horror ",
       "subtitles.tremblesfx": "",
+      "Result of Offend": "Imundo.#Que criatura imunda...#Você realmente não aprendeu nada, não é?#Eu lhe dei uma chance... e você a desperdiçou.#Patético.#Que decepcionante...#Eu esperava mais de você.#Você ousa repetir o mesmo erro diante de mim?#Nem mesmo depois de ser avisado você consegue obedecer.#Você realmente não sabe quando deve abaixar a cabeça.#Eu mandei você pedir desculpas. Foi tão difícil assim entender?#Está testando minha paciência de propósito?#Que insolência...#Você deveria estar implorando por perdão, não me fazendo repetir minhas palavras.#Eu lhe concedi uma segunda chance... e é assim que decide retribuir?#Talvez eu tenha sido generosa demais com você.#Olhe para você... ainda acha que tem o direito de me desafiar?#Você não merece sequer estar na minha presença.#Continue assim... e logo vai descobrir o quanto pode se arrepender.#Eu estava disposta a perdoá-lo... mas você insiste em me decepcionar.#Você teve sua chance.#Não haverá outra.#Chega.#Minha paciência acabou.#Imundo... eu deveria tê-lo colocado no seu devido lugar desde o começo.",
       "entity.soul_gauntlet.savior": "Savior",
       "key.soul_gauntlet.select_power": "Select Power",
+      "Initial Call": "Venha até mim...#Não faça uma dama esperar... venha até mim.#Eu estou aqui... esperando por você. Venha até mim...#Por que está tão longe? Aproxime-se...#Não precisa ter medo... apenas venha até mim.#Eu consigo ouvi-lo daí... então por que não vem?#Mais perto... quero vê-lo de perto.#Continue andando... não pare agora.#Você já veio tão longe... seria uma pena voltar agora.#Não seja tímido... venha, eu não vou fazer nada... ainda.#Está me fazendo esperar demais... venha logo.#Eu sei que está aí... então pare de se esconder e venha até mim.#Você pode me ouvir, não pode? Então escute com atenção... venha até mim.#Aproxime-se... deixe-me finalmente olhar para você.#Não precisa dizer nada... apenas venha.#Venha... eu prometo que será muito mais interessante se ficar ao meu lado.#Tão perto... e ainda assim tão distante. Venha até mim.#Não desperdice minha paciência... venha.#Eu estava começando a pensar que teria de ir buscá-lo pessoalmente...#Venha até mim... antes que eu mude de ideia.#Isso... continue vindo. Está quase aqui.#Venha mais perto... quero sussurrar uma coisa no seu ouvido.#Não tenha pressa... eu tenho todo o tempo do mundo esperando por você.#Você sabe que quer vir... então pare de resistir.#Venha até mim... e talvez eu até recompense sua coragem.",
       "Offend": "Ofendê-la",
       "advancements.soulgauntletachievement_3.title": "You really chose this route? What now? A talking flower?!  ",
       "Description of Offend": "Ofenda-a e vá embora sem olhar para trás.",
       "death.attack.dismemberment": "%1$s lost a part of himself",
+      "gui.soul_gauntlet.soul_gauntlet_interface.button_slot2 ": "",
       "death.attack.dismemberment.player": "%2$s  Left a part of himself for %1$s",
+      "Sorrys accepted": "Ótimo. É bom que tenha finalmente entendido a minha autoridade. Não haverá uma segunda vez. Se cometer o mesmo erro novamente, eu mesma vou matá-lo. E nunca mais ouse pisar aqui outra vez. O selo pode me manter presa, mas não será capaz de protegê-lo do meu imenso poder dentro deste lugar. Agora, vamos começar de novo. Vou voltar exatamente para onde paramos.",
       "gui.soul_gauntlet.soul_gauntlet_remove_powers.button_slot3": "",
       "gui.soul_gauntlet.soul_gauntlet_remove_powers.button_slot2": "",
+      "Offend Message": "Eu não deveria ter voltado. Você não passa de um monte de pedras. Que perda de tempo... Viva em ruínas até o fim. Eu vou embora. ",
       "gui.soul_gauntlet.visual_novel.label_message": "Message",
       "gui.soul_gauntlet.soul_gauntlet_interface.label_slot1": "Slot1",
       "Description of Sorry": "Abaixe a cabeça e comporte-se como um bom cachorro",
       "advancements.soulgauntletachievement_4.descr": "You have completed Part 1 of the Storyline",
       "item.soul_gauntlet.savior_spawn_egg": "Savior Spawn Egg",
       "gui.soul_gauntlet.soul_gauntlet_interface.label_nbtslot1": "%nbt:Slot1%",
+      "Apology": "Sinto muito, senhora. Por favor, perdoe meu erro e permita-me saber o que tem a me oferecer. ",
       "advancements.soul_gauntlet_achievement.descr": "Thanks for playing!!!",
       "advancements.soulgauntletachievement_7.title": "You\u0027re evil, sadistic, a true monster that devours everything in its path… This is why I like you. ",
+      "Division": "★彡——————————————————————————————彡★",
       "item.soul_gauntlet.soulgem": "Soul Gem",
       "advancements.soulgauntletachievement_4.title": "First Act",
       "advancements.soul_gauntlet_achievement.title": "Soul Gauntlet",
@@ -1378,13 +1455,13 @@
       "gamerule.stealChance.description": "Modify chances of gaining skills",
       "gui.soul_gauntlet.soul_gauntlet_interface.button_slot2": "",
       "gui.soul_gauntlet.soul_gauntlet_interface.button_slot3": "",
-      "Speaks out of ignorance": "Vai embora sem nem me deixar falar? Que rude... mal sabe o que está perdendo.\",Volte aqui! Eu ainda não terminei com você—,Aonde você vai? Não pode simplesmente me deixar aqui depois de finalmente vir falar comigo. Espera!,Indo embora? Covarde... Eu já deveria ter percebido que você não era a pessoa certa.,Aonde pensa que está indo? Você não vai viver neste mundo sem mim. Volte imediatamente!,Você ousa virar as costas enquanto eu ainda estou falando?,Ei! Eu não terminei de falar com você. Volte aqui.,Que falta de educação... eu lhe concedo minha atenção e é assim que decide me tratar?,Está realmente indo embora? Depois de me fazer perder meu tempo?,Volte. Agora. Não me obrigue a pedir duas vezes.,Você sequer vai se despedir? Que criatura insolente...,Não vire as costas para mim.,Eu estava começando a gostar de você... e já está me decepcionando.,Você veio até aqui apenas para me abandonar no meio da conversa? Que desperdício.,Espere! Ainda não terminei de falar... você vai me ouvir.,Não pense que pode simplesmente sair quando eu ainda estou falando.,Você acha mesmo que pode me ignorar assim?,Volte aqui, seu insolente. Minha conversa ainda não terminou.,Eu lhe dei o privilégio de falar comigo... não desperdice isso.,Você está indo embora porque tem medo do que eu tenho a dizer?,Não seja covarde... volte e olhe para mim enquanto eu falo.,Ah... então é assim? Basta ouvir algumas palavras minhas e você foge?,Que interessante... você parecia tão corajoso quando veio até aqui.,Você não vai escapar de mim simplesmente caminhando para longe.,Volte. Eu ainda tenho muito a dizer.,Não me faça levantar daqui para ir buscá-lo.,Você realmente quer me deixar falando sozinha? Que maneira desagradável de morrer...,Continue andando, se quiser... mas não diga que eu não avisei.,Se sair por aquela porta, talvez eu não esteja tão disposta a recebê-lo quando voltar.,Você está cometendo um erro... e eu detesto ter que explicar meus avisos duas vezes.,Volte enquanto ainda estou pedindo gentilmente.,Não confunda minha paciência com permissão para me desrespeitar.,Eu não terminei com você... portanto, você não terminou comigo.,Você veio até mim. Agora tenha a decência de ficar até o fim da conversa.,Está me abandonando no meio da frase? Que audácia...,Volte aqui... não faça uma dama correr atrás de você.,Você realmente pretende me deixar aqui sozinha? Depois de finalmente aparecer diante de mim?,Não me faça perder a paciência. Volte.,Eu posso perdoar sua covardia... mas não sua falta de educação.,Você ainda tem a chance de voltar. Não desperdice a minha boa vontade.,Vá embora, se realmente deseja... mas lembre-se de quem decidiu virar as costas primeiro.",
+      "Speaks out of ignorance": "Vai embora sem nem me deixar falar? Que rude... mal sabe o que está perdendo.,Volte aqui! Eu ainda não terminei com você—,Aonde você vai? Não pode simplesmente me deixar aqui depois de finalmente vir falar comigo. Espera!,Indo embora? Covarde... Eu já deveria ter percebido que você não era a pessoa certa.,Aonde pensa que está indo? Você não vai viver neste mundo sem mim. Volte imediatamente!,Você ousa virar as costas enquanto eu ainda estou falando?,Ei! Eu não terminei de falar com você. Volte aqui.,Que falta de educação... eu lhe concedo minha atenção e é assim que decide me tratar?,Está realmente indo embora? Depois de me fazer perder meu tempo?,Volte. Agora. Não me obrigue a pedir duas vezes.,Você sequer vai se despedir? Que criatura insolente...,Não vire as costas para mim.,Eu estava começando a gostar de você... e já está me decepcionando.,Você veio até aqui apenas para me abandonar no meio da conversa? Que desperdício.,Espere! Ainda não terminei de falar... você vai me ouvir.,Não pense que pode simplesmente sair quando eu ainda estou falando.,Você acha mesmo que pode me ignorar assim?,Volte aqui, seu insolente. Minha conversa ainda não terminou.,Eu lhe dei o privilégio de falar comigo... não desperdice isso.,Você está indo embora porque tem medo do que eu tenho a dizer?,Não seja covarde... volte e olhe para mim enquanto eu falo.,Ah... então é assim? Basta ouvir algumas palavras minhas e você foge?,Que interessante... você parecia tão corajoso quando veio até aqui.,Você não vai escapar de mim simplesmente caminhando para longe.,Volte. Eu ainda tenho muito a dizer.,Não me faça levantar daqui para ir buscá-lo.,Você realmente quer me deixar falando sozinha? Que maneira desagradável de morrer...,Continue andando, se quiser... mas não diga que eu não avisei.,Se sair por aquela porta, talvez eu não esteja tão disposta a recebê-lo quando voltar.,Você está cometendo um erro... e eu detesto ter que explicar meus avisos duas vezes.,Volte enquanto ainda estou pedindo gentilmente.,Não confunda minha paciência com permissão para me desrespeitar.,Eu não terminei com você... portanto, você não terminou comigo.,Você veio até mim. Agora tenha a decência de ficar até o fim da conversa.,Está me abandonando no meio da frase? Que audácia...,Volte aqui... não faça uma dama correr atrás de você.,Você realmente pretende me deixar aqui sozinha? Depois de finalmente aparecer diante de mim?,Não me faça perder a paciência. Volte.,Eu posso perdoar sua covardia... mas não sua falta de educação.,Você ainda tem a chance de voltar. Não desperdice a minha boa vontade.,Vá embora, se realmente deseja... mas lembre-se de quem decidiu virar as costas primeiro.",
       "item.soul_gauntlet.gauntletblueprint": "Gauntlet Blueprint",
       "gui.soul_gauntlet.soul_gauntlet_interface.label_slot2": "Slot2",
       "gui.soul_gauntlet.soul_gauntlet_interface.label_slot3": "Slot3",
       "block.soul_gauntlet.soul_altar": "Soul Altar",
-      "Result of Arrogance": "Voltou? Depois de me deixar falando sozinha? Deve finalmente ter percebido o quão incrível eu sou. Agora, peça desculpas.#Ora, ora... o cachorrinho covarde voltou, hein? Depois de me fazer acreditar que você poderia ser útil... que desagradável. Peça desculpas e talvez eu lhe dê uma segunda chance.#Olha só quem resolveu voltar. Acha mesmo que pode simplesmente aparecer depois de ir embora no meio da minha fala? Você nem deveria ter o privilégio de ouvir minha bela voz ecoando por estas paredes. Peça desculpas logo. Posso estar selada, mas sua vida ainda seria extremamente fácil de ceimar.#...#Até um villager asqueroso tem mais culhão que você. Vai pedir desculpas ou vai tentar fugir com o rabinho entre as pernas outra vez?",
-      "Savior_History": "\u003cP1[InBar,Time:2S]\u003e§b\u003c???\u003e Um humano...? Faz tanto tempo desde que alguém apareceu por aqui...\u003cPEND\u003e \u003cP2[InBar,Time:3S]\u003e§b\u003c???\u003e Você deve estar se perguntando quem eu sou, ou o que pode saquear ou matar por aqui, certo? Humano.\u003cPEND\u003e \u003cP3[InBar,Time:2S]\u003e§b\u003c???\u003e Eu sou Tashia Dolrein. Eu costumava ser bem famosa, antigamente.\u003cPEND\u003e \u003cP4[InBar,Time:2S]\u003e§c\u003cTashia Dolrein\u003e Antes daqueles traidores me selarem...\u003cPEND\u003e \u003cP5[InBar,Time:3S]\u003e§b\u003cTashia Dolrein\u003e Mas imagino que você não me conheça — já faz muuuuuito tempo.\u003cPEND\u003e \u003cP6[InBar,Time:2S]\u003e§b\u003cTashia Dolrein\u003e Vamos pular essa história chata e todo esse blá blá blá. Quero fazer um acordo com você, humano.\u003cPEND\u003e \u003cP7[InBar,Time:3S]\u003e§b\u003cTashia Dolrein\u003e Vou te dar a receita do meu poder — algo que toca os limites do divino...\u003cPEND\u003e \u003cP8[InBar,Time:3S]\u003e§b\u003cTashia Dolrein\u003e É só uma manopla simples. Depois que você fabricá-la, volte aqui e eu vou te ensinar como aprimorá-la.\u003cPEND\u003e \u003cP9[InBar,Time:2S]\u003e§c\u003cTashia Dolrein\u003e Para se tornar alguém tão terrível quanto eu...\u003cPEND\u003e \u003cP10[InBar,Time:2S]\u003e§b\u003cTashia Dolrein\u003e Boa sorte, humano.\u003cPEND\u003e \u003cP11[InBar,Time:2S]\u003e§b\u003cTashia Dolrein\u003e Bem-vindo de volta, meu caro aprendiz...\u003cPEND\u003e \u003cP12[InBar,Time:3S]\u003e§b\u003cTashia Dolrein\u003e Embora eu mal enxergue com estes olhos esculpidos em pedra, posso sentir — você confiou em mim... e forjou a manopla.\u003cPEND\u003e \u003cP13[InBar,Time:3S]\u003e§b\u003cTashia Dolrein\u003e Mas como já deve ter percebido, ela ainda é apenas uma casca. Seu verdadeiro poder continua adormecido...\u003cPEND\u003e \u003cP14[InBar,Time:2S]\u003e§b\u003cTashia Dolrein\u003e Para despertá-lo, será necessário realizar certos... sacrifícios.\u003cPEND\u003e \u003cP15[InBar,Time:3S]\u003e§b\u003cTashia Dolrein\u003e Afinal, a essência do meu poder é fundamentada no sacrifício — ela se alimenta de almas para satisfazer cada um dos seus desejos.\u003cPEND\u003e \u003cP16[InBar,Time:2S]\u003e§b\u003cTashia Dolrein\u003e Agora... toque em mim com a manopla, e eu lhe concederei minha bênção.\u003cPEND\u003e \u003cP17[InBar,Time:3S]\u003e§b\u003cTashia Dolrein\u003e Muito bem... Agora que abençoei sua manopla, você está pronto para receber a Gema da Alma.\u003cPEND\u003e \u003cP18[InBar,Time:3S]\u003e§b\u003cTashia Dolrein\u003e Uma gema especial que despertará o verdadeiro poder da manopla. Mas, como eu já disse... serão necessários sacrifícios.\u003cPEND\u003e \u003cP19[InBar,Time:2S]\u003e§c\u003cTashia Dolrein\u003e Elimine 100 daqueles nojentos Aldeões.\u003cPEND\u003e \u003cP20[InBar,Time:2S]\u003e§b\u003cTashia Dolrein\u003e Até a próxima, meu caro aprendiz...\u003cPEND\u003e \u003cP21[InBar,Time:2S]\u003e§b\u003cTashia Dolrein\u003e Olá, meu caro aprendiz.\u003cPEND\u003e \u003cP22[InBar,Time:3S]\u003e§b\u003cTashia Dolrein\u003e No instante em que você ceifou aquelas 100 almas miseráveis, senti uma onda de poder atravessar a pedra que me aprisiona.\u003cPEND\u003e \u003cP23[InBar,Time:3S]\u003e§b\u003cTashia Dolrein\u003e Quase pude sentir minha boca se curvar em um sorriso de alegria... e então me lembrei — sou uma estátua.\u003cPEND\u003e \u003cP24[InBar,Time:3S]\u003e§b\u003cTashia Dolrein\u003e Agora que possui a gema, vou lhe conceder a receita da verdadeira §6Manopla da Alma.\u003cPEND\u003e \u003cP25[InBar,Time:2S]\u003e§b\u003cTashia Dolrein\u003e Ah, como você cresceu rápido... Eu disse que faria um acordo, e cumpri com minha palavra.\u003cPEND\u003e \u003cP26[InBar,Time:2S]\u003e§b\u003cTashia Dolrein\u003e E o que quero em troca? Ora... absolutamente nada. Apenas aproveite o presente que lhe dei.\u003cPEND\u003e \u003cP27[InBar,Time:3S]\u003e§b\u003cTashia Dolrein\u003e Divirta-se colhendo essas almas trêmulas e deliciosas... Cada uma te aproxima da verdadeira grandeza.\u003cPEND\u003e \u003cP28[InBar,Time:2S]\u003e§b\u003cTashia Dolrein\u003e E talvez... me aproxime da minha também.\u003cPEND\u003e \u003cP29[InBar,Time:3S]\u003e§b\u003cTashia Dolrein\u003e Até que nos encontremos novamente... e disso, eu tenho certeza.\u003cPEND\u003e \u003cP30[InBar,Time:1S]\u003e\u003cPEND\u003e",
+      "Result of Arrogance": "Voltou? Depois de me deixar falando sozinha? Deve finalmente ter percebido o quão incrível eu sou. Agora, peça desculpas.#Ora, ora... o cachorrinho covarde voltou, hein? Depois de me fazer acreditar que você poderia ser útil... que desagradável. Peça desculpas e talvez eu lhe dê uma segunda chance.#Olha só quem resolveu voltar. Acha mesmo que pode simplesmente aparecer depois de ir embora no meio da minha fala? Você nem deveria ter o privilégio de ouvir minha bela voz ecoando por estas paredes. Peça desculpas logo. Posso estar selada, mas sua vida ainda seria extremamente fácil de ceifar.#...#Até um villager asqueroso tem mais culhão que você. Vai pedir desculpas ou vai tentar fugir com o rabinho entre as pernas outra vez?",
+      "Savior_History": "\u003cP1[t:2]\u003e§b\u003c???\u003e Um humano...? Faz tanto tempo desde que alguém apareceu por aqui...\u003cPEND\u003e \u003cP2[t:2]\u003e§b\u003c???\u003e Você deve estar se perguntando quem eu sou, ou o que pode saquear ou matar por aqui, certo? Humano.\u003cPEND\u003e \u003cP3[t:5]\u003e§b\u003c???\u003e Eu sou Tashia Dolrein. Eu costumava ser bem famosa, antigamente.\u003cPEND\u003e \u003cP4[t:10]\u003e§c\u003cTashia Dolrein\u003e Antes daqueles traidores me selarem...\u003cPEND\u003e \u003cP5[t:2]\u003e§b\u003cTashia Dolrein\u003e Mas imagino que você não me conheça — já faz muuuuuito tempo.\u003cPEND\u003e \u003cP6[t:2]\u003e§b\u003cTashia Dolrein\u003e Vamos pular essa história chata e todo esse blá blá blá. Quero fazer um acordo com você, humano.\u003cPEND\u003e \u003cP7[t:2]\u003e§b\u003cTashia Dolrein\u003e Vou te dar a receita do meu poder — algo que toca os limites do divino...\u003cPEND\u003e \u003cP8[t:2]\u003e§b\u003cTashia Dolrein\u003e É só uma manopla simples. Depois que você fabricá-la, volte aqui e eu vou te ensinar como aprimorá-la.\u003cPEND\u003e \u003cP9[t:2]\u003e§c\u003cTashia Dolrein\u003e Para se tornar alguém tão terrível quanto eu...\u003cPEND\u003e \u003cP10[t:2]\u003e§b\u003cTashia Dolrein\u003e Boa sorte, humano.\u003cPEND\u003e \u003cP11[t:2]\u003e§b\u003cTashia Dolrein\u003e Bem-vindo de volta, meu caro aprendiz...\u003cPEND\u003e \u003cP12[t:2]\u003e§b\u003cTashia Dolrein\u003e Embora eu mal enxergue com estes olhos esculpidos em pedra, posso sentir — você confiou em mim... e forjou a manopla.\u003cPEND\u003e \u003cP13[t:2]\u003e§b\u003cTashia Dolrein\u003e Mas como já deve ter percebido, ela ainda é apenas uma casca. Seu verdadeiro poder continua adormecido...\u003cPEND\u003e \u003cP14[t:2]\u003e§b\u003cTashia Dolrein\u003e Para despertá-lo, será necessário realizar certos... sacrifícios.\u003cPEND\u003e \u003cP15[t:2]\u003e§b\u003cTashia Dolrein\u003e Afinal, a essência do meu poder é fundamentada no sacrifício — ela se alimenta de almas para satisfazer cada um dos seus desejos.\u003cPEND\u003e \u003cP16[t:2]\u003e§b\u003cTashia Dolrein\u003e Agora... toque em mim com a manopla, e eu lhe concederei minha bênção.\u003cPEND\u003e \u003cP17[t:2]\u003e§b\u003cTashia Dolrein\u003e Muito bem... Agora que abençoei sua manopla, você está pronto para receber a Gema da Alma.\u003cPEND\u003e \u003cP18[t:2]\u003e§b\u003cTashia Dolrein\u003e Uma gema especial que despertará o verdadeiro poder da manopla. Mas, como eu já disse... serão necessários sacrifícios.\u003cPEND\u003e \u003cP19[t:2]\u003e§c\u003cTashia Dolrein\u003e Elimine 100 daqueles nojentos Aldeões.\u003cPEND\u003e \u003cP20[t:2]\u003e§b\u003cTashia Dolrein\u003e Até a próxima, meu caro aprendiz...\u003cPEND\u003e \u003cP21[t:2]\u003e§b\u003cTashia Dolrein\u003e Olá, meu caro aprendiz.\u003cPEND\u003e \u003cP22[t:2]\u003e§b\u003cTashia Dolrein\u003e No instante em que você ceifou aquelas 100 almas miseráveis, senti uma onda de poder atravessar a pedra que me aprisiona.\u003cPEND\u003e \u003cP23[t:2]\u003e§b\u003cTashia Dolrein\u003e Quase pude sentir minha boca se curvar em um sorriso de alegria... e então me lembrei — sou uma estátua.\u003cPEND\u003e \u003cP24[t:2]\u003e§b\u003cTashia Dolrein\u003e Agora que possui a gema, vou lhe conceder a receita da verdadeira §6Manopla da Alma.\u003cPEND\u003e \u003cP25[t:2]\u003e§b\u003cTashia Dolrein\u003e Ah, como você cresceu rápido... Eu disse que faria um acordo, e cumpri com minha palavra.\u003cPEND\u003e \u003cP26[t:2]\u003e§b\u003cTashia Dolrein\u003e E o que quero em troca? Ora... absolutamente nada. Apenas aproveite o presente que lhe dei.\u003cPEND\u003e \u003cP27[t:2]\u003e§b\u003cTashia Dolrein\u003e Divirta-se colhendo essas almas trêmulas e deliciosas... Cada uma te aproxima da verdadeira grandeza.\u003cPEND\u003e \u003cP28[t:2]\u003e§b\u003cTashia Dolrein\u003e E talvez... me aproxime da minha também.\u003cPEND\u003e \u003cP29[t:2]\u003e§b\u003cTashia Dolrein\u003e Até que nos encontremos novamente... e disso, eu tenho certeza.\u003cPEND\u003e \u003cP30[t:2]\u003e\u003cPEND\u003e",
       "effect.soul_gauntlet.heavy_eyes": "Heavy Eyes",
       "gui.soul_gauntlet.soul_gauntlet_interface.button_slot": "Slot 1",
       "item.soul_gauntlet.gauntletdamaged": "Soul Gauntlet",
@@ -1433,6 +1510,10 @@
           },
           {
             "name": "PlayerConfig",
+            "children": []
+          },
+          {
+            "name": "Commands_Folders",
             "children": []
           }
         ]
@@ -1498,6 +1579,10 @@
           {
             "name": "Message",
             "children": []
+          },
+          {
+            "name": "Utily",
+            "children": []
           }
         ]
       },
@@ -1532,6 +1617,10 @@
       },
       {
         "name": "Tabelas de items",
+        "children": []
+      },
+      {
+        "name": "Commands",
         "children": []
       }
     ]
