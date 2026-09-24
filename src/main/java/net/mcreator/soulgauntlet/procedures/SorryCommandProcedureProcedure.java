@@ -103,47 +103,28 @@ public class SorryCommandProcedureProcedure {
 				SoulGauntletMod.queueServerWork(40, () -> {
 					String[] Data = Component.translatable("Result of Offend").getString().split("#");
 					int Index = (int) (Math.random() * Data.length);
-					((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
-						Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-							return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
-						}
-					}.compareDistOf(x, y, z)).findFirst().orElse(null)).getPersistentData().putBoolean("Speaking", true);
-					if (entity instanceof Player _player && !_player.level().isClientSide())
-						_player.displayClientMessage(Component.literal((Component.translatable("Division").getString())), false);
-					if (entity instanceof Player _player && !_player.level().isClientSide())
-						_player.displayClientMessage(Component
-								.literal((Component.translatable("\u00A7c").getString() + "" + ((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
-									Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-										return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
-									}
-								}.compareDistOf(x, y, z)).findFirst().orElse(null)).getPersistentData().getString("Prefixo") + entity.getPersistentData().getString("Prefixo") + Data[Index])), false);
+					if (entity.getPersistentData().getBoolean("Speaking") == false) {
+						((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
+							Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
+								return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
+							}
+						}.compareDistOf(x, y, z)).findFirst().orElse(null)).getPersistentData().putBoolean("Speaking", true);
+						if (entity instanceof Player _player && !_player.level().isClientSide())
+							_player.displayClientMessage(Component.literal((Component.translatable("Division").getString())), false);
+						if (entity instanceof Player _player && !_player.level().isClientSide())
+							_player.displayClientMessage(Component
+									.literal((Component.translatable("\u00A7c").getString() + "" + ((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
+										Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
+											return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
+										}
+									}.compareDistOf(x, y, z)).findFirst().orElse(null)).getPersistentData().getString("Prefixo") + entity.getPersistentData().getString("Prefixo") + Data[Index])), false);
+					}
 					SoulGauntletMod.queueServerWork(100, () -> {
 						((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
 							Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
 								return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
 							}
 						}.compareDistOf(x, y, z)).findFirst().orElse(null)).getPersistentData().putBoolean((entity.getDisplayName().getString()), true);
-						if (((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
-							Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-								return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
-							}
-						}.compareDistOf(x, y, z)).findFirst().orElse(null)) instanceof SaviorEntity _datEntSetI)
-							_datEntSetI.getEntityData().set(SaviorEntity.DATA_Stage, (int) ((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
-								Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-									return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
-								}
-							}.compareDistOf(x, y, z)).findFirst().orElse(null)).getPersistentData().getDouble("OldStage"));
-						((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
-							Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-								return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
-							}
-						}.compareDistOf(x, y, z)).findFirst().orElse(null)).getPersistentData().putBoolean("Speaking", false);
-						if (((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
-							Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-								return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
-							}
-						}.compareDistOf(x, y, z)).findFirst().orElse(null)) instanceof SaviorEntity _datEntSetL)
-							_datEntSetL.getEntityData().set(SaviorEntity.DATA_Reset, true);
 						if (new Object() {
 							public boolean checkGamemode(Entity _ent) {
 								if (_ent instanceof ServerPlayer _serverPlayer) {
@@ -171,8 +152,10 @@ public class SorryCommandProcedureProcedure {
 									}
 								}, _bpos);
 							}
-							if (entity instanceof Player _player)
-								_player.closeContainer();
+							SoulGauntletMod.queueServerWork(10, () -> {
+								if (entity instanceof Player _player)
+									_player.closeContainer();
+							});
 							entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.MAGIC)), 1000);
 						} else {
 							entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.MAGIC)), 1000);
@@ -207,8 +190,15 @@ public class SorryCommandProcedureProcedure {
 										}
 									}.compareDistOf(x, y, z)).findFirst().orElse(null))).setAnimation("Idle");
 								}
+								if (((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
+									Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
+										return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
+									}
+								}.compareDistOf(x, y, z)).findFirst().orElse(null)) instanceof SaviorEntity _datEntSetL)
+									_datEntSetL.getEntityData().set(SaviorEntity.DATA_Reset, true);
 								if (entity instanceof SaviorEntity _datEntSetI)
 									_datEntSetI.getEntityData().set(SaviorEntity.DATA_Stage, 0);
+								entity.getPersistentData().putDouble("OldStage", 0);
 							});
 						});
 					});
