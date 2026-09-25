@@ -91,6 +91,11 @@ public class SorryCommandProcedureProcedure {
 							}
 						}.compareDistOf(x, y, z)).findFirst().orElse(null)) instanceof SaviorEntity _datEntSetL)
 							_datEntSetL.getEntityData().set(SaviorEntity.DATA_Reset, true);
+						((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
+							Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
+								return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
+							}
+						}.compareDistOf(x, y, z)).findFirst().orElse(null)).getPersistentData().putBoolean("Second opportunity", true);
 					});
 				});
 			});
@@ -196,9 +201,17 @@ public class SorryCommandProcedureProcedure {
 									}
 								}.compareDistOf(x, y, z)).findFirst().orElse(null)) instanceof SaviorEntity _datEntSetL)
 									_datEntSetL.getEntityData().set(SaviorEntity.DATA_Reset, true);
-								if (entity instanceof SaviorEntity _datEntSetI)
+								if (((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
+									Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
+										return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
+									}
+								}.compareDistOf(x, y, z)).findFirst().orElse(null)) instanceof SaviorEntity _datEntSetI)
 									_datEntSetI.getEntityData().set(SaviorEntity.DATA_Stage, 0);
-								entity.getPersistentData().putDouble("OldStage", 0);
+								((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
+									Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
+										return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
+									}
+								}.compareDistOf(x, y, z)).findFirst().orElse(null)).getPersistentData().putDouble("OldStage", 0);
 							});
 						});
 					});
