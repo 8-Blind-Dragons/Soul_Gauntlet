@@ -116,7 +116,7 @@
       "value": ""
     },
     "onRightClickedOn": {
-      "name": "RightButton"
+      "name": "RightbuttonV2"
     },
     "onMobTickUpdate": {
       "name": "SaviorCore"

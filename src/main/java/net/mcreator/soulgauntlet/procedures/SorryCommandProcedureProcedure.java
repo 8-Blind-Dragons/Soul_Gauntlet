@@ -44,6 +44,7 @@ public class SorryCommandProcedureProcedure {
 				_player.displayClientMessage(Component.literal(" "), false);
 		}
 		if (BoolArgumentType.getBool(arguments, "Response") == true) {
+			assert Boolean.TRUE; //#dbg:SorryCommandProcedure:JogadorSeDesculpou
 			SoulGauntletMod.queueServerWork(20, () -> {
 				if (entity instanceof Player _player && !_player.level().isClientSide())
 					_player.displayClientMessage(Component.literal(("<" + entity.getDisplayName().getString() + "> " + Component.translatable("Apology").getString())), false);
@@ -69,6 +70,11 @@ public class SorryCommandProcedureProcedure {
 							Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
 								return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
 							}
+						}.compareDistOf(x, y, z)).findFirst().orElse(null)).getPersistentData().putBoolean("Second opportunity", true);
+						((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
+							Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
+								return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
+							}
 						}.compareDistOf(x, y, z)).findFirst().orElse(null)).getPersistentData().putBoolean("Fury", false);
 						if (((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
 							Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
@@ -85,21 +91,11 @@ public class SorryCommandProcedureProcedure {
 								return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
 							}
 						}.compareDistOf(x, y, z)).findFirst().orElse(null)).getPersistentData().putBoolean("Speaking", false);
-						if (((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
-							Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-								return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
-							}
-						}.compareDistOf(x, y, z)).findFirst().orElse(null)) instanceof SaviorEntity _datEntSetL)
-							_datEntSetL.getEntityData().set(SaviorEntity.DATA_Reset, true);
-						((Entity) world.getEntitiesOfClass(SaviorEntity.class, AABB.ofSize(new Vec3(x, y, z), 10000, 10000, 10000), e -> true).stream().sorted(new Object() {
-							Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-								return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
-							}
-						}.compareDistOf(x, y, z)).findFirst().orElse(null)).getPersistentData().putBoolean("Second opportunity", true);
 					});
 				});
 			});
 		} else {
+			assert Boolean.TRUE; //#dbg:SorryCommandProcedure:JogadorOfendeu
 			SoulGauntletMod.queueServerWork(20, () -> {
 				if (entity instanceof Player _player && !_player.level().isClientSide())
 					_player.displayClientMessage(Component.literal(("<" + entity.getDisplayName().getString() + "> " + Component.translatable("Offend Message").getString())), false);

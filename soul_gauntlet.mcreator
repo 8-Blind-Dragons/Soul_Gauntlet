@@ -1112,41 +1112,12 @@
       "type": "procedure",
       "compiles": true,
       "locked_code": false,
-      "registry_name": "right_button",
+      "registry_name": "right_buttonv0",
       "metadata": {
         "files": [
           "src/main/java/net/mcreator/soulgauntlet/procedures/RightButtonProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "sourceentity",
-            "type": "entity"
-          },
-          {
-            "name": "itemstack",
-            "type": "itemstack"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/Procedimentos/Savior"
     },
@@ -1322,6 +1293,198 @@
         ]
       },
       "path": "~/Procedimentos/Savior"
+    },
+    {
+      "name": "ResetSaviorV1",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "reset_savior_v_1",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/soulgauntlet/procedures/ResetSaviorV1Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "Savior",
+            "type": "entity"
+          },
+          {
+            "name": "Type",
+            "type": "string"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Externos"
+    },
+    {
+      "name": "RightbuttonV2",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rightbutton_v_2",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/soulgauntlet/procedures/RightbuttonV2Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Procedimentos/Savior"
+    },
+    {
+      "name": "SaviorReset",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "savior_reset",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/soulgauntlet/procedures/SaviorResetProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "Savior",
+            "type": "entity"
+          },
+          {
+            "name": "Type",
+            "type": "string"
+          },
+          {
+            "name": "world",
+            "type": "string"
+          }
+        ]
+      },
+      "path": "~/Externos/Utility"
+    },
+    {
+      "name": "SaviorStage1",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "savior_stage_1",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/soulgauntlet/procedures/SaviorStage1Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "Player",
+            "type": "entity"
+          },
+          {
+            "name": "Savior",
+            "type": "entity"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "Ticks",
+            "type": "number"
+          },
+          {
+            "name": "Message",
+            "type": "string"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Procedimentos/Savior/Stages"
+    },
+    {
+      "name": "StageControlls",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stage_controlls",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/soulgauntlet/procedures/StageControllsProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "Savior",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "logic"
+          },
+          {
+            "name": "Type",
+            "type": "string"
+          }
+        ]
+      },
+      "path": "~/Externos/Utility"
+    },
+    {
+      "name": "SaviorStage2",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "savior_stage_2",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/soulgauntlet/procedures/SaviorStage2Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "Player",
+            "type": "entity"
+          },
+          {
+            "name": "Savior",
+            "type": "entity"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "Message",
+            "type": "string"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Procedimentos/Savior/Stages"
     }
   ],
   "variable_elements": [
@@ -1351,8 +1514,8 @@
       "advancements.soulgauntletachievement_5.title": "First Soul",
       "gamerule.stealChance": "Steal Chance",
       "attribute.soul_gauntlet.soulresistance": "Soul Resistance",
-      "advancements.soulgauntletachievement_5.descr": "Steal a soul for the first time",
       "CollectPowers.Success": "§aYou successfully stole the soul",
+      "advancements.soulgauntletachievement_5.descr": "Steal a soul for the first time",
       "CollectPowers.Weaknesses": "§cYou failed to steal the soul",
       "advancements.soulgauntletachievement_2.title": "It\u0027s near you",
       "death.attack.dismemberment.item": "%1$s ???",
@@ -1488,6 +1651,10 @@
               {
                 "name": "Estrutura",
                 "children": []
+              },
+              {
+                "name": "Stages",
+                "children": []
               }
             ]
           },
@@ -1581,7 +1748,7 @@
             "children": []
           },
           {
-            "name": "Utily",
+            "name": "Utility",
             "children": []
           }
         ]

@@ -48,7 +48,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.soulgauntlet.procedures.SaviorCoreProcedure;
-import net.mcreator.soulgauntlet.procedures.RightButtonProcedure;
+import net.mcreator.soulgauntlet.procedures.RightbuttonV2Procedure;
 import net.mcreator.soulgauntlet.init.SoulGauntletModEntities;
 
 public class SaviorEntity extends PathfinderMob implements GeoEntity {
@@ -192,7 +192,7 @@ public class SaviorEntity extends PathfinderMob implements GeoEntity {
 		Entity entity = this;
 		Level world = this.level();
 
-		RightButtonProcedure.execute(world, x, y, z, entity, sourceentity, itemstack);
+		RightbuttonV2Procedure.execute(world, entity, sourceentity);
 		return retval;
 	}
 
