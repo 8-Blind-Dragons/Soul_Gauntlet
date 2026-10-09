@@ -1216,7 +1216,32 @@
         "files": [
           "src/main/java/net/mcreator/soulgauntlet/procedures/SorryCommandProcedureProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/Procedimentos/Commands_Folders"
     },
@@ -1655,6 +1680,10 @@
             "type": "entity"
           },
           {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
             "name": "x",
             "type": "number"
           },
@@ -1707,8 +1736,8 @@
       "advancements.soulgauntletachievement_5.title": "First Soul",
       "gamerule.stealChance": "Steal Chance",
       "attribute.soul_gauntlet.soulresistance": "Soul Resistance",
-      "CollectPowers.Success": "§aYou successfully stole the soul",
       "advancements.soulgauntletachievement_5.descr": "Steal a soul for the first time",
+      "CollectPowers.Success": "§aYou successfully stole the soul",
       "CollectPowers.Weaknesses": "§cYou failed to steal the soul",
       "advancements.soulgauntletachievement_2.title": "It\u0027s near you",
       "death.attack.dismemberment.item": "%1$s ???",

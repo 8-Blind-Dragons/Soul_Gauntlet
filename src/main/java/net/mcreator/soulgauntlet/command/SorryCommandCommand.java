@@ -34,7 +34,7 @@ public class SorryCommandCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					SorryCommandProcedureProcedure.execute();
+					SorryCommandProcedureProcedure.execute(world, x, y, z, arguments, entity);
 					return 0;
 				})));
 	}

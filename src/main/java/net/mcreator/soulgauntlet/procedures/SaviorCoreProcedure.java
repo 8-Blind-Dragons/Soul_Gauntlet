@@ -109,7 +109,6 @@ public class SaviorCoreProcedure {
 																	+ Component.translatable("Offend Message").getString() + "\"}}}]"));
 												}
 											}
-											entity.getPersistentData().putBoolean("Waiting_Response", true);
 										});
 									});
 								});

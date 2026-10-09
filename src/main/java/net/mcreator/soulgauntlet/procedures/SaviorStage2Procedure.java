@@ -25,7 +25,7 @@ public class SaviorStage2Procedure {
 				_player.displayClientMessage(Component.literal((Component.translatable("Division").getString())), false);
 			if (Player instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal(Message), false);
-			if (SaviorStageCoreProcedure.execute(world, x, y, z, Player, Savior, Message) == true) {
+			if (SaviorStageCoreProcedure.execute(world, x, y, z, Player, Savior, entity, Message) == true) {
 				SoulGauntletMod.queueServerWork((int) Ticks, () -> {
 					SaviorStage2Procedure.execute(world, x, y, z, Player, Savior, entity);
 				});
