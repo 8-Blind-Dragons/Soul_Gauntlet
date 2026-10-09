@@ -11,23 +11,29 @@ import net.mcreator.soulgauntlet.entity.SaviorEntity;
 import net.mcreator.soulgauntlet.SoulGauntletMod;
 
 public class SaviorStage2Procedure {
-	public static void execute(LevelAccessor world, Entity Player, Entity Savior, Entity entity, Entity sourceentity, String Message) {
-		if (Player == null || Savior == null || entity == null || sourceentity == null || Message == null)
+	public static void execute(LevelAccessor world, double x, double y, double z, Entity Player, Entity Savior, Entity entity) {
+		if (Player == null || Savior == null || entity == null)
 			return;
+		String Message = "";
 		double Ticks = 0;
-		if (Math.round(Savior.getPersistentData().getDouble("Message")) < 17) {
+		double SumMessage = 0;
+		if (Savior.getPersistentData().getDouble("Message") < 16) {
+			SumMessage = SummessageProcedure.execute(Savior);
+			Message = GetMessageSaviorProcedure.execute(SumMessage);
+			Ticks = GetTikcsProcedure.execute(SumMessage);
 			if (Player instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal((Component.translatable("Division").getString())), false);
 			if (Player instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal(Message), false);
-			SoulGauntletMod.queueServerWork((int) Ticks, () -> {
-				Savior.getPersistentData().putBoolean("Speaking", false);
-				RightbuttonV2Procedure.execute(world, entity, sourceentity);
-			});
+			if (SaviorStageCoreProcedure.execute(world, x, y, z, Player, Savior, Message) == true) {
+				SoulGauntletMod.queueServerWork((int) Ticks, () -> {
+					SaviorStage2Procedure.execute(world, x, y, z, Player, Savior, entity);
+				});
+			}
 		} else {
-			StageControllsProcedure.execute(true, Savior, "End");
+			Savior.getPersistentData().putBoolean("Speaking", false);
 			if (Savior instanceof SaviorEntity _datEntSetI)
-				_datEntSetI.getEntityData().set(SaviorEntity.DATA_Stage, 4);
+				_datEntSetI.getEntityData().set(SaviorEntity.DATA_Stage, 3);
 		}
 	}
 }

@@ -62,8 +62,7 @@ public class SaviorCoreProcedure {
 							return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
 						}
 					}.compareDistOf(x, y, z)).findFirst().orElse(null)).getDisplayName().getString())) {
-						if ((entity.getPersistentData().getBoolean("Speaking") == false && entity.getPersistentData().getBoolean("Fury") == true) == true
-								&& !world.getEntitiesOfClass(Player.class, AABB.ofSize(new Vec3(x, y, z), 10, 10, 10), e -> true).isEmpty()) {
+						if (entity.getPersistentData().getDouble("Points of anger") == 1) {
 							String[] Data2 = Component.translatable("Result of Arrogance").getString().split("#");
 							int Index2 = (int) (Math.random() * Data2.length);
 							entity.getPersistentData().putBoolean("Speaking", true);

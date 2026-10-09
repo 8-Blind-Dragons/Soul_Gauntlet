@@ -192,7 +192,7 @@ public class SaviorEntity extends PathfinderMob implements GeoEntity {
 		Entity entity = this;
 		Level world = this.level();
 
-		RightbuttonV2Procedure.execute(world, entity, sourceentity);
+		RightbuttonV2Procedure.execute(world, x, y, z, entity, sourceentity, itemstack);
 		return retval;
 	}
 
