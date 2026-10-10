@@ -54,7 +54,6 @@ public class SaviorStageCoreProcedure {
 			});
 		}
 		if (!(!world.getEntitiesOfClass(Player.class, AABB.ofSize(new Vec3(x, y, z), 10, 10, 10), e -> true).isEmpty()) && Savior.getPersistentData().getBoolean("Speaking") == true && Savior.getPersistentData().getDouble("Points of anger") < 1) {
-			assert Boolean.TRUE; //#dbg:SaviorStageCore:Points1
 			SoulGauntletMod.queueServerWork(40, () -> {
 				String[] Data = Component.translatable("Speaks out of ignorance").getString().split(",");
 				int Index = (int) (Math.random() * Data.length);
@@ -68,7 +67,6 @@ public class SaviorStageCoreProcedure {
 			return false;
 		}
 		if (!(!world.getEntitiesOfClass(Player.class, AABB.ofSize(new Vec3(x, y, z), 10, 10, 10), e -> true).isEmpty()) && Savior.getPersistentData().getBoolean("Speaking") == true && Savior.getPersistentData().getDouble("Points of anger") == 2) {
-			assert Boolean.TRUE; //#dbg:SaviorStageCore:Points2
 			Savior.getPersistentData().putDouble("Points of anger", 1000);
 			SoulGauntletMod.queueServerWork(40, () -> {
 				String[] Data = Component.translatable("Result of Offend").getString().split("#");
