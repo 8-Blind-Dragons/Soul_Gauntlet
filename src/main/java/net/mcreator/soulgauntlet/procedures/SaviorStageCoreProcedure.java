@@ -98,6 +98,10 @@ public class SaviorStageCoreProcedure {
 						} else {
 							Player.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.MAGIC)), 1000);
 						}
+						Savior.getPersistentData().putDouble("Points of anger", 0);
+						Savior.getPersistentData().putString("Prefixo", "<???> ");
+						Savior.getPersistentData().putString("PlayerName", "");
+						Savior.getPersistentData().putBoolean("Speaking", false);
 					});
 				});
 			});
